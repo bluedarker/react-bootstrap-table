@@ -147,7 +147,8 @@ class TableBody extends React.Component{
 
     return(
       <thead>
-        <tr>{selectRowHeader}{theader}</tr>
+        <tr>{selectRowHeader}
+          {theader}</tr>
       </thead>
     )
   }

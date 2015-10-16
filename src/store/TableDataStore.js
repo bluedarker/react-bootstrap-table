@@ -55,10 +55,14 @@ export class TableDataStore{
     this.keyField = keyField;
     this.enablePagination = isPagination;
     this.customSortFuncMap = customSortFuncMap;
+    //if keyField do not have value,fix it
+    this.fixDataKeyValue();
   }
 
   setData(data) {
     this.data = data;
+    //if keyField do not have value,fix it
+    this.fixDataKeyValue();
     if(this.isOnFilter) {
       if(null !== this.filterObj) this.filter(this.filterObj);
       if(null !== this.searchText) this.search(this.searchText);
@@ -67,7 +71,16 @@ export class TableDataStore{
       this.sort(this.sortObj.order, this.sortObj.sortField);
     }
   }
-
+  fixDataKeyValue(){
+    var data=this.data,keyField=this.keyField;
+    if(data&&keyField&&Array.isArray(data)){
+      data.forEach(function(v,i){
+        if(!v[keyField]){
+          v[keyField]='key-autoValue-'+new Date().getTime()+i;
+        }
+      })
+    }
+  }
   setSelectedRowKey(selectedRowKeys){
     this.selected = selectedRowKeys;
   }

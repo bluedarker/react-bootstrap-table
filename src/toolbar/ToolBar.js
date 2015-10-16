@@ -78,8 +78,9 @@ class ToolBar extends React.Component{
         validateState:null,
         shakeEditor:false
       });
-      //reset form
-      this.refs.form.getDOMNode().reset();
+      if(window.jQuery){
+        window.jQuery(this.refs.modal.getDOMNode()).modal('hide');
+      }
 
     }
   }
@@ -162,9 +163,7 @@ class ToolBar extends React.Component{
               <h4 className="modal-title">New Record</h4>
             </div>
             <div className="modal-body">
-              <form ref="form">
               {inputField}
-              </form>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
