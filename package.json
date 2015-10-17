@@ -44,7 +44,11 @@
     "style-loader": "^0.12.4",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.0.0",
+<<<<<<< HEAD
     "webpack-dev-server": "^1.12.0"
+=======
+    "webpack-dev-server": "^1.7.0"
+>>>>>>> origin/master
   },
   "dependencies": {
     "react-toastr": "^2.1.0",
